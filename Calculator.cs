@@ -9,10 +9,20 @@ namespace ConditionalPractice
         public static void BasicCalculator()
         {
             char c;
+
             do
             {
                 Console.WriteLine("Choose from the options:\n1.Addition\n2.Subtraction\n3.Multiply\n4.Divide\n5.Exit!");
-                int choice = Convert.ToInt32(Console.ReadLine());
+                int choice = 5;
+                try
+                {
+                    choice = Convert.ToInt32(Console.ReadLine());
+                }
+                catch(FormatException e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine("Enter number between 1 to 5 only!");
+                }
 
                 switch (choice)
                 {

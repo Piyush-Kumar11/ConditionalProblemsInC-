@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ConditionalPractice
 {
@@ -16,33 +14,53 @@ namespace ConditionalPractice
 
             while (count < maxCount)
             {
-                Console.WriteLine("Enter Username: ");
-                string username = Console.ReadLine();
-
-                Console.WriteLine("Enter password: ");
-                string password = Console.ReadLine();
-
-                if (username.Equals(user) && password.Equals(pass))
+                try
                 {
+                    Console.WriteLine("Enter Username: ");
+                    string username = Console.ReadLine();
+
+                    Console.WriteLine("Enter Password: ");
+                    string password = Console.ReadLine();
+
+                    if (!username.Equals(user))
+                    {
+                        throw new InvalidUsernameException();
+                    }
+
+                    if (!password.Equals(pass))
+                    {
+                        throw new InvalidPasswordException();
+                    }
+
+                    // If both username and password are correct
                     Console.WriteLine("Login Success!!!");
                     return;
                 }
-                else if (!username.Equals(user)){
-                    Console.WriteLine("Wrong Username!");
-                }
-                else if (!password.Equals(pass)){
-                    Console.WriteLine("Wrong Password!");
-                }
-                else
+                catch (InvalidUsernameException ex)
                 {
-                    Console.WriteLine("Both username & password is incorrect.");
+                    Console.WriteLine(ex.Message);
                 }
+                catch (InvalidPasswordException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
                 count++;
-                Console.WriteLine("Only " + (maxCount - count) + " attempt left!");
+                if (count < maxCount)
+                {
+                    Console.WriteLine("Only " + (maxCount - count) + " attempts left!");
+                }
             }
 
-            Console.WriteLine("Account Locked!");
-            
+            // If all attempts are used, lock the account
+            try
+            {
+                throw new AccountLockedException();
+            }
+            catch(AccountLockedException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

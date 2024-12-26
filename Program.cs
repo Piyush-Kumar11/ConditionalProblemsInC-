@@ -8,11 +8,11 @@ namespace ConditionalPractice
     {
         static void Main(string[] args)
         {
-            Calculator.BasicCalculator();
+            //Calculator.BasicCalculator();
 
             //LoginSystem.Login();
 
-            //MoviePriceCalculator.CalculateMoviePrice();
+            MoviePriceCalculator.CalculateMoviePrice();
         }
     }
 }
