@@ -6,7 +6,7 @@ namespace ConditionalPractice
 {
     public class AccountLockedException : Exception
     {
-        public AccountLockedException() : base("Account has been locked due to too many failed attempts.")
+        public AccountLockedException(string msg) : base(msg)
         {
         }
     }

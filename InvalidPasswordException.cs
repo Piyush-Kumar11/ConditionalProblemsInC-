@@ -6,7 +6,7 @@ namespace ConditionalPractice
 {
     public class InvalidPasswordException : Exception
     {
-        public InvalidPasswordException() : base("Invalid password entered.")
+        public InvalidPasswordException(string msg) : base(msg)
         {
         }
     }

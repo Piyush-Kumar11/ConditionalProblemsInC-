@@ -6,7 +6,7 @@ namespace ConditionalPractice
 {
     public class InvalidUsernameException : Exception
     {
-        public InvalidUsernameException() : base("Invalid username entered.")
+        public InvalidUsernameException(string msg) : base(msg)
         {
         }
     }

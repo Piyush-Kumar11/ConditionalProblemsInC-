@@ -24,12 +24,12 @@ namespace ConditionalPractice
 
                     if (!username.Equals(user))
                     {
-                        throw new InvalidUsernameException();
+                        throw new InvalidUsernameException("Invalid username entered.");
                     }
 
                     if (!password.Equals(pass))
                     {
-                        throw new InvalidPasswordException();
+                        throw new InvalidPasswordException("Invalid password entered.");
                     }
 
                     // If both username and password are correct
@@ -55,7 +55,7 @@ namespace ConditionalPractice
             // If all attempts are used, lock the account
             try
             {
-                throw new AccountLockedException();
+                throw new AccountLockedException("Account has been locked due to too many failed attempts.");
             }
             catch(AccountLockedException e)
             {
